@@ -1,0 +1,47 @@
+const jokeEl=document.getElementById('joke') 
+const jokebtn=document.getElementById('jokeBtn')
+
+jokeBtn.addEventListener('click',generateJoke)
+
+generateJoke()
+
+ //USING ASYNC/AWAITS
+
+ async function generateJoke() {
+      
+      const config={
+ 		headers:{
+ 			'Accept':'application/json'
+
+ 		}
+ 	}
+
+ 	const res = await fetch('https:icanhazdadjoke.com',config) 
+ 	
+ 	//whenever we use await we use 'async' in function
+
+ 	const data = await res.json()
+ 	jokeEl.innerHTML = data.joke
+
+   }
+
+
+//USING .then 
+/*
+ function generateJoke() {
+      
+      const config={
+ 		headers:{
+ 			'Accept':'application/json'
+
+ 		}
+ 	}
+
+ 	fetch('https:icanhazdadjoke.com',config)
+ 	.then((res)=>res.json())
+ 	.then((data)=>{
+ 		jokeEl.innerHTML=data.joke
+ 	})
+ }
+
+ */
